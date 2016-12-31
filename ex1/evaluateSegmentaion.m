@@ -1,7 +1,7 @@
-function [ VD, VDO ] = evaluateSegmentaion ( segmentationFilename, groundTruthFilename )
+function [ VDO ] = evaluateSegmentaion ( segmentationFilename, groundTruthFilename )
 % EVALUATESEGMENTATION a function for validating the quality of the 
 % segmentation
-%   returns volume difference and volume overlap difference
+%   returns volumetric overlap difference
     
     % loading segmentation file
     niiStruct = load_untouch_nii_gzip(segmentationFilename);
@@ -10,32 +10,22 @@ function [ VD, VDO ] = evaluateSegmentaion ( segmentationFilename, groundTruthFi
     % loading ground truth file
     niiStruct = load_untouch_nii_gzip(groundTruthFilename);
     groundTruth = niiStruct.img;
-    
-%     numPixelsGroundTruth = [];
-%     for i = 1:size(groundTruth,3)
-%         numPixelsGroundTruth(end+1) = sum(groundTruth(:,:,i));
-%     end
-%     
-%     firstSlice = find(numPixelsGroundTruth, 'first');
-%     lastSlice = find(numPixelsGroundTruth, 'last');
-%     
-%     segmentation = segmentation(:,:,firstSlice:lastSlice);
 
-    CC = bwconncomp(groundTruth, 26);
-    groundTruthStats = regionprops(CC, 'BoundingBox');
-    bBox = groundTruthStats.BoundingBox;
-    
-    segmentation = segmentation(bBox(1,1):bBox(1,1)+bBox(1,2), ...
-        bBox(2,1):bBox(2,1)+bBox(2,2), bBox(3,1):bBox(3,1)+bBox(3,2)); 
+    % creating a bounding box around segmentation
+    gt = bwconncomp(groundTruth, 26);
+    stats = regionprops(gt,'BoundingBox');
+    bBox = stats.BoundingBox;
+    x = round(bBox(1)); x_width = round(bBox(4));
+    y = round(bBox(2)); y_width = round(bBox(5));
+    z = round(bBox(3)); z_width = round(bBox(6));
 
-    overlap = and(segmentation, groundTruth);
-    overlapVol = sum(overlap(:));
-    
-    segVol = sum(segmentation);
-    groundVol = sum(groundTruth);
-    
-    VDO = 2*overlapVol / (segVol + groundVol);    
-    VD = 0;
+    % taking relevant parts from both images
+    bBoxGroundTruth = groundTruth(y:y+y_width,x:x+x_width,z:z+z_width);
+    bBoxSeg = segmentation(y:y+y_width,x:x+x_width,z:z+z_width);
 
+    % calculating VDO
+    union = bBoxGroundTruth | bBoxSeg;
+    overlap = bBoxGroundTruth & bBoxSeg;
+    VDO = (1-nnz(overlap)/nnz(union))*100;
 end
 

@@ -1,0 +1,11 @@
+function showPointsOnPictures ( brain_fixed, brain_moving, points_fixed, points_moving )
+%SHOWPOINTSONPICTURES plots the two pictures and the points selected for
+%them
+%   Detailed explanation goes here
+
+    imshow(brain_fixed);
+    hold on
+    axis xy equal
+
+end
+

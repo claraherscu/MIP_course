@@ -1,0 +1,67 @@
+loading: D:\Clara-University\third_year091216\MIP_course\ex1\partAFiles\10000104_1_CTce_ThAb_original.nii.gz
+#slices: 451
+started body segmentation
+started lungs segmentation
+BB = 1 CC = 451
+getting 3D band around lungs from BB to CC
+loading: D:\Clara-University\third_year091216\MIP_course\ex1\partAFiles\10000104_1_CTce_ThAb_Aorta.nii.gz
+starting spine segmentation using region growing
+finished spine segmentation, starting ribs segmentation
+Elapsed time is 7839.622330 seconds.
+finished ribs segmentation
+============ done with this file ============
+
+VDO =
+
+   NaN
+
+loading: D:\Clara-University\third_year091216\MIP_course\ex1\partAFiles\10000105_1_CTce_ThAb_original.nii.gz
+#slices: 466
+started body segmentation
+started lungs segmentation
+BB = 292 CC = 399
+getting 3D band around lungs from BB to CC
+loading: D:\Clara-University\third_year091216\MIP_course\ex1\partAFiles\10000105_1_CTce_ThAb_Aorta.nii.gz
+starting spine segmentation using region growing
+finished spine segmentation, starting ribs segmentation
+Elapsed time is 4173.957231 seconds.
+finished ribs segmentation
+============ done with this file ============
+
+VDO =
+
+   NaN
+
+loading: D:\Clara-University\third_year091216\MIP_course\ex1\partAFiles\10000106_1_CTce_ThAb_original.nii.gz
+#slices: 450
+started body segmentation
+started lungs segmentation
+BB = 255 CC = 316
+getting 3D band around lungs from BB to CC
+loading: D:\Clara-University\third_year091216\MIP_course\ex1\partAFiles\10000106_1_CTce_ThAb_Aorta.nii.gz
+starting spine segmentation using region growing
+finished spine segmentation, starting ribs segmentation
+Elapsed time is 4621.297251 seconds.
+finished ribs segmentation
+============ done with this file ============
+
+VDO =
+
+   NaN
+
+loading: D:\Clara-University\third_year091216\MIP_course\ex1\partAFiles\10000108_1_CTce_ThAb_original.nii.gz
+#slices: 468
+started body segmentation
+started lungs segmentation
+BB = 260 CC = 307
+getting 3D band around lungs from BB to CC
+loading: D:\Clara-University\third_year091216\MIP_course\ex1\partAFiles\10000108_1_CTce_ThAb_Aorta.nii.gz
+starting spine segmentation using region growing
+finished spine segmentation, starting ribs segmentation
+Elapsed time is 5290.597187 seconds.
+finished ribs segmentation
+============ done with this file ============
+
+VDO =
+
+   88.5281

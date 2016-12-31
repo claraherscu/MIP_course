@@ -8,7 +8,5 @@ function [ final_segmentation ] = isolate_band_for_seeds( body_seg,final_segment
             final_segmentation(:,:,i)=0;
         end
     end
-    
-
 end
 
