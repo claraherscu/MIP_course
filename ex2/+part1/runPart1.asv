@@ -86,13 +86,13 @@ RA = T1.ref;
 RB = T2_rot_n.ref;
 tform = imregtform(B, RB, A, RA, 'rigid', optimizer, metric);
 % showing some slices
-% part1.showRegistrationResults3d ( A, B, tform, RB );
+part1.showRegistrationResults3d ( A, B, tform, RB );
 
 % showing histograms
-% part1.showHistograms ( A, B, tform, RB );
+part1.showHistograms ( A, B, tform, RB );
 % calculating nmi - doesn't work yet
 nmi_before = part1.calcNMI(A, B);
 transformedBrain = imwarp(B, RB, tform, 'outputView', RB);
 nmi_after = part1.calcNMI(A, transformedBrain);
-display(['nmi before registration is: ' num2str(nmi_before)]);
-display(['nmi after registration is: ' num2str(nmi_after)]);
+display(['nmi beforenmi_before);
+display(nmi_after);

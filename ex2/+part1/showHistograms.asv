@@ -1,0 +1,77 @@
+function showHistograms ( A, B, tform, RB )
+% SHOWHISTOGRAMS a function that displays the joint histograms of two
+% images A, B before and after applying the transformation tform on B
+
+% %     take #1
+%     transformedBrain = imwarp(B, tform, 'outputView', RA);
+%     figure;
+%     subplot(1,2,1);
+%     histogram2(A,B);
+%     xlabel('T1');
+%     ylabel('T2');
+%     title('before registration');
+%     subplot(1,2,2);
+%     histogram2(A,transformedBrain);
+%     xlabel('T1');
+%     ylabel('T2');
+%     title('after registration');
+    
+    
+%     Z = 10 + peaks;
+%     surf(Z), hold on, imagesc(Z);
+
+    % take #2
+    figure;
+    
+    sp1 = subplot(1,2,1);
+    [N, ~, ~] = histcounts2(A,B);
+    imagesc(log10(N));
+    axis xy equal; %ylim([1 128]);
+    colorbar;
+    title('Joint histogram before registration');
+    xlabel('Image before transformation');
+    ylabel('Original image');
+    colorbar;
+        
+    sp2 = subplot(1,2,2);
+    transformedBrain = imwarp(B, RB, tform, 'outputView', RB);
+    [transformedN, ~, ~] = histcounts2(A,transformedBrain);
+    imagesc(log10(transformedN));
+    axis xy equal; %ylim([1 128]);
+    title('Joint histogram after registration');
+    xlabel('Transformed image');
+    ylabel('Original image');
+    colorbar;
+    title('Joint histogram after registration');
+   
+    axis([sp1 sp2], [0 10 1 128]);
+
+%     % take 3
+%     transformedBrain = imwarp(B, RB, tform, 'outputView', RB);
+%     im1_lb = int16(floor(min(min(min(A)))));
+%     im1_ub = int16(ceil(max(max(max(A)))));
+% 
+%     im2_lb = int16(floor(min(min(min(transformedBrain)))));
+%     im2_ub = int16(ceil(max(max(max(transformedBrain)))));
+% %     [N, ~, ~] = histcounts2(A,B,[im1_lb 1000], [im2_lb 1000]);
+% %     imagesc((N));
+%     upper2 = 1000 - im1_lb;
+%     figure;
+%     subplot(1,2,2);
+%     imagesc(log10(utils.jointHistogram(A, im1_lb:1000, ...
+%         transformedBrain, im2_lb:1000)));
+%     axis equal xy; xlim([im2_lb 1000]); ylim([im1_lb 1000]);
+%     title('Joint histogram after registration');
+%     xlabel('Transformed image');
+%     ylabel('Original image');
+%     colorbar;
+%     subplot(1,2,1);
+%     imagesc(log10(utils.jointHistogram(A, im1_lb:1000, ...
+%         B, im2_lb:1000)));
+%     axis equal xy; xlim([im2_lb 1000]); ylim([im1_lb 1000]);
+%     title('Joint histogram before registration');
+%     xlabel('Image before transformation');
+%     ylabel('Original image');
+%     colorbar;
+end
+

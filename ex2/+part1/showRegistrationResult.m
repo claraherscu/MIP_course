@@ -1,7 +1,6 @@
-function showRegistrationResult ( tform )
+function showRegistrationResult ( brain_fixed, brain_moving, tform )
 
     % get the pictures
-    load brain.mat;
     transformedBrain = imwarp(brain_moving, tform, 'outputView', ...
         imref2d(size(brain_fixed)));
     
